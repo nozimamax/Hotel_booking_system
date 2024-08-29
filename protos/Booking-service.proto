@@ -1,0 +1,92 @@
+syntax = "proto3";
+
+option go_package = "./genproto/booking";
+
+service BookingService{
+    rpc CreateBooking(CreateBookingReq) returns (CreateBookingResp){}
+    rpc UpdateBooking(UpdateBookingReq) returns (UpdateBookingResp){}
+    rpc DeleteBooking(DeleteBookingReq) returns (DeleteBookingResp){}
+    rpc GetBooking(GetBookingReq) returns (GetBookingResp){}
+    rpc GetBookingByUserId(GetBookingByUserIdReq) returns (GetBookingByUserIdResp){}
+}
+
+message Booking{
+    string booking_id = 1;
+    string user_id = 2;
+    string hotel_id = 3;
+    string room_type = 4;
+    string check_in_date = 5;
+    string check_out_date = 6;
+    float total_amount = 7;
+}
+
+
+message CreateBookingReq{
+    string user_id = 1;
+    string hotel_id = 2;
+    string room_type = 3;
+    string check_in_date = 4;
+    string check_out_date = 5;
+    float total_amount = 6;
+}
+
+message CreateBookingResp{
+    string user_id = 1;
+    string hotel_id = 2;
+    string room_type = 3;
+    string check_in_date = 4;
+    string check_out_date = 5;
+    float total_amount = 6;
+    bool status = 7;
+}
+
+
+message GetBookingReq{
+    string id = 1;
+}
+message GetBookingResp{
+    string booking_id = 1;
+    string user_id = 2;
+    string hotel_id = 3;
+    string room_type = 4;
+    string check_in_date = 5;
+    string check_out_date = 6;
+    float total_amount = 7;
+    bool status = 8;
+}
+
+
+message UpdateBookingReq{
+    string booking_id = 1;
+    string check_in_date = 2;
+    string check_out_date = 3;
+    float total_amount = 4;
+}
+message UpdateBookingResp{
+    string booking_id = 1;
+    string user_id = 2;
+    string hotel_id = 3;
+    string room_type = 4;
+    string check_in_date = 5;
+    string check_out_date = 6;
+    float total_amount = 7;
+    bool status = 8;
+}
+
+
+message DeleteBookingReq{
+    string id = 1;
+}
+message DeleteBookingResp{
+    bool status = 1;
+    string message = 2;
+    string booking_id = 3;
+}
+
+
+message GetBookingByUserIdReq{
+    string id = 1;
+}
+message GetBookingByUserIdResp{
+    repeated Booking books = 1;
+}

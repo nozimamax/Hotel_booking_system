@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+option go_package = "genproto/notif";
+
+service NotifService{
+    rpc Notification(NotificationReq)returns(VoidNotif){}
+}
+
+message NotificationReq{
+    bool status = 1;
+    string message = 2;
+    string email = 3;
+}
+
+
+message VoidNotif{}
+
